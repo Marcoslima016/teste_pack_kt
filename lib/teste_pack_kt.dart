@@ -14,6 +14,9 @@ class TestePackKt {
 
   ///[=============================  TESTE 1 ( POSICAO HANDLE) =============================]
 
+  EventChannel _stream = EventChannel('locationStatusStream');
+  StreamSubscription _locationStatusChangeSubscription;
+
   // static Future get handleLocationChanges async {
   //   const EventChannel _stream = EventChannel('locationStatusStream');
 
@@ -28,6 +31,24 @@ class TestePackKt {
   //     });
   //   }
   // }
+
+  void _handleLocationStatusChanges() {
+    print(_stream.toString());
+    bool _locationStatusChanged;
+    if (_locationStatusChanged == null) {
+      _locationStatusChangeSubscription = _stream.receiveBroadcastStream().listen((onData) {
+        _locationStatusChanged = onData;
+        print("LOCATION ACCESS CHANGED: CURRENT-> ${onData ? 'On' : 'Off'}");
+        if (onData == false) {
+          var location = Location();
+          location.requestService();
+        }
+        if (onData == true) {
+          _subscribeToLocationChanges();
+        }
+      });
+    }
+  }
 
   ///[=============================  TESTE 2 ( flutter beacon )  =============================]
   ///
