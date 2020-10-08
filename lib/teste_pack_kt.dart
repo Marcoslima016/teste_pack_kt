@@ -14,20 +14,20 @@ class TestePackKt {
 
   ///[=============================  TESTE 1 ( POSICAO HANDLE) =============================]
 
-  static Future get handleLocationChanges async {
-    const EventChannel _stream = EventChannel('locationStatusStream');
+  // static Future get handleLocationChanges async {
+  //   const EventChannel _stream = EventChannel('locationStatusStream');
 
-    bool _locationStatusChanged;
-    if (_locationStatusChanged == null) {
-      _stream.receiveBroadcastStream().listen((onData) {
-        _locationStatusChanged = onData;
-        print("LOCATION ACCESS IS NOW ${onData ? 'On' : 'Off'}");
-        if (onData == false) {
-          // Request Permission Access
-        }
-      });
-    }
-  }
+  //   bool _locationStatusChanged;
+  //   if (_locationStatusChanged == null) {
+  //     _stream.receiveBroadcastStream().listen((onData) {
+  //       _locationStatusChanged = onData;
+  //       print("LOCATION ACCESS IS NOW ${onData ? 'On' : 'Off'}");
+  //       if (onData == false) {
+  //         // Request Permission Access
+  //       }
+  //     });
+  //   }
+  // }
 
   ///[=============================  TESTE 2 ( flutter beacon )  =============================]
   ///
@@ -47,24 +47,24 @@ class TestePackKt {
 
   ///[===================================  TESTE 3 ( timer )  ===================================]
 
-  static const stream = const EventChannel('com.yourcompany.eventchannelsample/stream');
+  // static const stream = const EventChannel('com.yourcompany.eventchannelsample/stream');
 
-  StreamSubscription _timerSubscription = null;
+  // StreamSubscription _timerSubscription = null;
 
-  void _enableTimer() {
-    if (_timerSubscription == null) {
-      _timerSubscription = stream.receiveBroadcastStream().listen(_updateTimer);
-    }
-  }
+  // void _enableTimer() {
+  //   if (_timerSubscription == null) {
+  //     _timerSubscription = stream.receiveBroadcastStream().listen(_updateTimer);
+  //   }
+  // }
 
-  void _disableTimer() {
-    if (_timerSubscription != null) {
-      _timerSubscription.cancel();
-      _timerSubscription = null;
-    }
-  }
+  // void _disableTimer() {
+  //   if (_timerSubscription != null) {
+  //     _timerSubscription.cancel();
+  //     _timerSubscription = null;
+  //   }
+  // }
 
-  void _updateTimer(timer) {
-    print("Timer $timer");
-  }
+  // void _updateTimer(timer) {
+  //   print("Timer $timer");
+  // }
 }
