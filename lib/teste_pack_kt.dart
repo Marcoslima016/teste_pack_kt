@@ -28,4 +28,20 @@ class TestePackKt {
       });
     }
   }
+
+  ///[=============================  TESTE 2 ( flutter beacon )  =============================]
+  ///
+  /// Event Channel used to communicate to native code ranging beacons.
+  static const EventChannel _rangingChannel = EventChannel('flutter_beacon_event');
+
+  /// This information does not change from call to call. Cache it.
+  Stream _onRanging;
+
+  Stream ranging(regions) {
+    if (_onRanging == null) {
+      final list = regions.map((region) => region.toJson).toList();
+      _onRanging = _rangingChannel.receiveBroadcastStream(list).map((dynamic event) => RangingResult.from(event));
+    }
+    return _onRanging;
+  }
 }
