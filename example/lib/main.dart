@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   void _handleLocationChanges() {
     var position;
 
-    position = TestePackKt.handleLocationChanges;
+    // position = TestePackKt.handleLocationChanges;
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
